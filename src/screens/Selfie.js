@@ -44,10 +44,10 @@ const Selfie = ({navigation}) => {
   const checkPermissionOFGps = async () => {
     try {
       const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
         {
-          title: 'GPS Permission',
-          message: 'App needs access to your GPS ',
+          title: 'Location Permission',
+          message: 'App needs access to your Location',
           buttonNeutral: 'Ask Me Later',
           buttonNegative: 'Cancel',
           buttonPositive: 'OK',
@@ -63,25 +63,20 @@ const Selfie = ({navigation}) => {
     }
   };
 
-  const getCurrentLocation = () => {
+  function getCurrentLocation() {
     GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 60000,
     })
       .then(location => {
-        if (location) {
-          navigation.navigate('Map', {
-            latitude: location.latitude,
-            longitude: location.longitude,
-          });
-        }
+        console.log(location);
       })
 
       .catch(error => {
         const {code, message} = error;
-        console.warn(code, message);
+        console.log(code, message);
       });
-  };
+  }
   return (
     <View
       style={{
