@@ -1,19 +1,26 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const SucessScreen = () => {
+const SuccessScreen = ({navigation}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Time');
+    }, 2000);
+  }, [navigation]);
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
         <Text style={styles.title}>Success...!!</Text>
+      </View>
+      <View style={styles.txt}>
         <Text style={styles.txt}>Thank You For Your Confirmation...</Text>
-        <Text style={styles.txt}>$(``Have A good Day:``)</Text>
+        <Text style={styles.txt}>Have A good Day :)</Text>
       </View>
     </View>
   );
 };
 
-export default SucessScreen;
+export default SuccessScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +46,10 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   txt: {
-    
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 10,
+    color: 'black',
   },
 });

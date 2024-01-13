@@ -1,6 +1,7 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Map = ({navigation, route}) => {
   const latitude = route.params.latitude;
@@ -23,7 +24,10 @@ const Map = ({navigation, route}) => {
 
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => navigation.navigate('Time')}>
+        onPress={() => {
+          AsyncStorage.setItem('key', 'start');
+          navigation.navigate('Success');
+        }}>
         <Text style={styles.title}>Continue</Text>
       </TouchableOpacity>
     </View>
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: 'black',
-
+    position: 'absolute',
     borderRadius: 50,
     width: 100,
     alignItems: 'center',
@@ -53,5 +57,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     margin: 10,
     alignSelf: 'center',
+    top: 0,
+    bottom: 0,
+    left: 140,
+    right: 150,
+    padding: 5,
+    marginTop: 650,
   },
 });

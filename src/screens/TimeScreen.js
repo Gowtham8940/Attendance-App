@@ -1,7 +1,15 @@
-import {StyleSheet, Text, TouchableOpacity, View, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Button,
+  Alert,
+} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CountDown from './CountDown';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TimeScreen = ({navigation}) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -9,6 +17,16 @@ const TimeScreen = ({navigation}) => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [asyncValue, setAsyncValue] = useState(null);
+
+  useEffect(() => {
+    const getAsyncValue = async () => {
+      const value = await AsyncStorage.getItem('key');
+      setAsyncValue(value);
+    };
+
+    getAsyncValue();
+  }, [asyncValue]);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -58,9 +76,18 @@ const TimeScreen = ({navigation}) => {
     return () => clearInterval(timerRef.current);
   }, []);
 
-  const Stop = () => {
-    clearInterval(timerRef.current);
+  const LogOut = () => {
+    // clearInterval(timerRef.current);
+    // Alert.alert('You have  signed Out Successfully');
   };
+
+  const Stop = () => {
+    setTimeout(() => {
+      clearInterval(timerRef.current);
+      navigation.replace('Home');
+    }, 1000);
+  };
+
   const Reset = () => {
     setHours(0);
     setMinutes(0);
@@ -68,7 +95,7 @@ const TimeScreen = ({navigation}) => {
   };
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={styles.title}>Time</Text>
+      <Text style={styles.title}>LogIn/LogOut</Text>
       <Text
         style={{
           fontWeight: 'bold',
