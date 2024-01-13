@@ -7,6 +7,14 @@ buildscript {
         ndkVersion = "25.1.8937393"
         kotlinVersion = "1.8.0"
     }
+    allprojects {
+    repositories {
+            configurations.all{
+                resolutionStrategy{
+                    force "com.google.android.gms:play-services-location:21.0.1"
+      }}
+    }
+    }
     repositories {
         google()
         mavenCentral()

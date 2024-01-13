@@ -2,20 +2,25 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-const Map = ({navigation}) => {
+const Map = ({navigation, route}) => {
+  const latitude = route.params.latitude;
+  const longitude = route.params.longitude;
+  const image = route.params.image;
+
   return (
     <View style={{flex: 1}}>
       <MapView
         style={{flex: 1}}
         provider={PROVIDER_GOOGLE}
         region={{
-          latitude: 12.208660461016196,
-          longitude: 78.37954011034851,
+          latitude: latitude,
+          longitude: longitude,
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
         }}>
-        <Marker coordinate={{latitude: 37.78825, longitude: -122.4324}} />
+        <Marker coordinate={{latitude: latitude, longitude: longitude}} />
       </MapView>
+
       <TouchableOpacity
         style={styles.btn}
         onPress={() => navigation.navigate('Time')}>
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: 'black',
-    
+
     borderRadius: 50,
     width: 100,
     alignItems: 'center',

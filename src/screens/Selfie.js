@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {launchCamera} from 'react-native-image-picker';
-import GetLocation from 'react-native-get-location';
+import Geolocation from '@react-native-community/geolocation';
 
 const Selfie = ({navigation}) => {
   const [image, setImage] = React.useState(
@@ -44,7 +44,7 @@ const Selfie = ({navigation}) => {
   const checkPermissionOFGps = async () => {
     try {
       const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
           title: 'Location Permission',
           message: 'App needs access to your Location',
@@ -63,26 +63,30 @@ const Selfie = ({navigation}) => {
     }
   };
 
-  function getCurrentLocation() {
-    GetLocation.getCurrentPosition({
-      enableHighAccuracy: true,
-      timeout: 60000,
-    })
-      .then(location => {
-        console.log(location);
-      })
-
-      .catch(error => {
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        if (position.coords) {
+          navigation.navigate('Map', {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            image: image,
+          });
+        }
+      },
+      error => {
         const {code, message} = error;
-        console.log(code, message);
-      });
-  }
+        console.warn(code, message);
+      },
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+    );
+  };
   return (
     <View
       style={{
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: 'White',
+        backgroundColor: 'white',
       }}>
       <Text
         style={{
@@ -123,7 +127,7 @@ const Selfie = ({navigation}) => {
           disabled={toggle}
           activeOpacity={0.8}
           onPress={() => {
-            navigation.navigate('Map');
+            checkPermissionOFGps();
           }}
           style={{
             backgroundColor: toggle ? 'lightgray' : 'black',
