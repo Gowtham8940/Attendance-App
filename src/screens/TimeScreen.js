@@ -1,14 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Button,
-  Alert,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import CountDown from './CountDown';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TimeScreen = ({navigation}) => {
@@ -76,11 +68,6 @@ const TimeScreen = ({navigation}) => {
     return () => clearInterval(timerRef.current);
   }, []);
 
-  const LogOut = () => {
-    // clearInterval(timerRef.current);
-    // Alert.alert('You have  signed Out Successfully');
-  };
-
   const Stop = () => {
     setTimeout(() => {
       clearInterval(timerRef.current);
@@ -96,24 +83,8 @@ const TimeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text style={styles.title}>LogIn/LogOut</Text>
-      <Text
-        style={{
-          fontWeight: 'bold',
-          fontSize: 20,
-          marginTop: 20,
-          color: 'plum',
-        }}>
-        {new Date().toDateString()}
-      </Text>
-      <Text
-        style={{
-          fontWeight: 'bold',
-          fontSize: 20,
-          marginTop: 20,
-          color: 'skyblue',
-        }}>
-        {new Date().toLocaleTimeString()}
-      </Text>
+      <Text style={styles.date}>{new Date().toDateString()}</Text>
+      <Text style={styles.time}>{new Date().toLocaleTimeString()}</Text>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
@@ -135,8 +106,10 @@ const TimeScreen = ({navigation}) => {
       <TouchableOpacity style={styles.btn3} onPress={Reset}>
         <Text style={{color: 'white', fontWeight: 'bold'}}>Reset</Text>
       </TouchableOpacity>
+
       {/* <Button style={{marginTop: 20}} title="Reset" onPress={Reset} /> */}
       {/* <Button title="LogOut" onPress={Stop} /> */}
+
       <TouchableOpacity
         style={styles.btn}
         onPress={() => navigation.navigate('Selfie')}>
@@ -200,5 +173,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     padding: 5,
     borderRadius: 50,
+  },
+  time: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginTop: 20,
+    color: 'sky-blue',
+  },
+  date: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginTop: 20,
+    color: 'plum',
   },
 });
