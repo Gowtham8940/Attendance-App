@@ -17,7 +17,7 @@ const TestingScreen = () => {
     <View>
       <Text>TestingScreen</Text>
       <Text>{JSON.stringify(GetLocation)}</Text>
-      
+      <Text>Vanadium</Text>
     </View>
   );
 };

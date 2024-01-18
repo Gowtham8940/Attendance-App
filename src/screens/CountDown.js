@@ -48,7 +48,7 @@
 //       </Text>
 //       <Button title="Reset" onPress={Reset} />
 //       <Button title="LogOut" onPress={Stop} />
-    
+
 //     </View>
 //   );
 // };
