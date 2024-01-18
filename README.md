@@ -77,3 +77,12 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+- ![WhatsApp Image 2024-01-18 at 11 55 23 AM](https://github.com/Gowtham8940/Attendance-App/assets/153708124/09f72036-d3ab-4a36-adcf-071912fd0fc9)
+![WhatsApp Image 2024-01-18 at 11 55 22 AM (1)](https://github.com/Gowtham8940/Attendance-App/assets/153708124/ee612e8e-bb79-4e5e-ab53-a2f2c7d651bd)
+![WhatsApp Image 2024-01-18 at 11 55 22 AM](https://github.com/Gowtham8940/Attendance-App/assets/153708124/55705898-579c-4bd8-8a9a-5d30c7a545d3)
+![WhatsApp Image 2024-01-18 at 11 55 21 AM (2)](https://github.com/Gowtham8940/Attendance-App/assets/153708124/406165f4-fad6-4cc5-8c07-e39f8f49c289)
+![WhatsApp Image 2024-01-18 at 11 55 21 AM (1)](https://github.com/Gowtham8940/Attendance-App/assets/153708124/852ea627-fe3b-4dbc-8616-86c2de2cb8c2)
+![WhatsApp Image 2024-01-18 at 11 55 21 AM](https://github.com/Gowtham8940/Attendance-App/assets/153708124/76fdc810-26de-4287-973b-4ba7a7052756)
+![WhatsApp Image 2024-01-18 at 11 55 20 AM (1)](https://github.com/Gowtham8940/Attendance-App/assets/153708124/7ef54ac6-bfad-4fa6-9fee-ef35c06cffc6)
+![WhatsApp Image 2024-01-18 at 11 55 20 AM](https://github.com/Gowtham8940/Attendance-App/assets/153708124/d5999672-0055-4e86-a28c-dddabd90203d)
