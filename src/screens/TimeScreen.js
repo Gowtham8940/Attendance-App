@@ -72,6 +72,8 @@ const TimeScreen = ({navigation}) => {
     setTimeout(() => {
       clearInterval(timerRef.current);
       navigation.replace('Home');
+      console.log('LogOut ====> Date/Time ====>', Date());
+      console.log('hours', hours, 'minutes', minutes, 'seconds', seconds);
     }, 1000);
   };
 
@@ -112,7 +114,12 @@ const TimeScreen = ({navigation}) => {
 
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => navigation.navigate('Selfie')}>
+        onPress={() =>
+          navigation.navigate(
+            'Selfie',
+            console.log('LogIn ====> Date/Time ====>', Date()),
+          )
+        }>
         <Text style={styles.title2}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn2} onPress={Stop}>

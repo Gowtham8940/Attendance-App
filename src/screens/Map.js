@@ -27,6 +27,7 @@ const Map = ({navigation, route}) => {
         onPress={() => {
           AsyncStorage.setItem('key', 'start');
           navigation.navigate('Success');
+          console.log(latitude, longitude, image);
         }}>
         <Text style={styles.title}>Continue</Text>
       </TouchableOpacity>
